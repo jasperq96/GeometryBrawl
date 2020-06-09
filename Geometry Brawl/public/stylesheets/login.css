@@ -1,0 +1,100 @@
+body{
+    overflow: auto;
+    background-image: url(PurpleGrid.gif);
+}
+
+.heading{
+    text-align: center;
+    color: black;
+    font-size: 100px;
+    text-shadow: -2px 0 #ed21ff, 0 2px #ed21ff, 2px 0 #ed21ff, 0 -2px #ed21ff, 1px 3px 0 #ed21ff, 1px 8px 0 #ed21ff, 1px 13px 5px #ed21ff;
+}
+
+.descBackground{
+    width: 40%;
+    border: 5px solid #ed21ff;
+    background: rgba(0, 0, 0, 0.9);
+
+    float: left;
+    margin-left: 5%;
+    margin-bottom: 2%;
+    border-radius: 20px;
+    word-wrap: break-word;
+    overflow:hidden;
+
+}
+
+.loginBackground{
+    width: 40%;
+    height: 60%;
+    border: 5px solid #ed21ff;
+    background: rgba(0, 0, 0, 0.4);
+
+    float: right;
+    margin-right: 5%;
+    border-radius: 20px;
+}
+
+.writing{
+    text-align: center;
+    color: #ed21ff;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.inputBox{
+    color:#ed21ff;
+    border:2px solid #ed21ff;
+    margin-top: 5px;
+    margin-left: 10%;
+    display:block;
+    position: relative;
+    background: black;
+    width: 70%;
+    align-content: center;
+    padding: 10px;
+}
+
+.sub_buttons{
+    color:#ed21ff;
+    border:2px solid #ed21ff;
+    background: black;
+    display: block;
+    position: relative;
+    margin: 1% auto;
+    padding: 10px;
+    width: 25%;
+}
+
+
+.tabs{
+    display: table;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 10px;
+    border: none;
+    background: rgba(0, 0, 0, 0.4);
+    color: #ed21ff;
+}
+
+.tabcontent{
+    display: none;
+}
+
+
+.tabs button{
+    background-color: inherit;
+    display: table-cell;
+    width: 50%;
+    outline: none;
+    cursor: pointer;
+    transition: 0.3s;
+
+    padding: 5px;
+    font-size: 20px;
+    color: #ed21ff;
+    border: 5px solid #ed21ff;
+    border-left: none;
+    border-top: none;
+    border-right: none;
+}

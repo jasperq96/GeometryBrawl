@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Game test</title>
+    <script type="text/javascript">
+        var currentColor = '#6C6C6C'; //default color is #6C6C6C
+        function color(color){
+            if (color == null){
+                return currentColor;
+            }
+            else{
+                currentColor = color;
+                return currentColor;
+            }
+        }
+    </script>
+    <link rel="stylesheet" type="text/css" href="game.css">
+    <script src="libraries/matter.js" type="text/javascript" ></script>
+    <script src="libraries/p5.js" type="text/javascript"></script>
+<!--     <script src="sketch.js" type="text/javascript"> </script> -->
+    <script src="objects/circle.js" type="text/javascript"> </script>
+    <script src="objects/boundaries.js" type="text/javascript"> </script>
+    <script src="objects/box.js" type="text/javascript"> </script>
+    <script src="https://fathomless-castle-05798.herokuapp.com/socket.io/socket.io.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
+</head>
+<body style="background-color:black;">
+
+    <canvas id="canvas"></canvas>
+    <script type="text/javascript">
+        color('<%=currentColor%>');
+        // var socket = io.connect(window.location.hostname + ':' + <%=connection%>); //Local connection ONLY
+        var socket = io.connect(window.location.hostname); //server connection ONLY
+    </script>
+
+    <script src="sketch.js"></script>
+    <div class="returnHome">
+        <form action="/home">
+            <button type="submit" class="homeButton">Return Home</button>
+        </form>
+    </div>
+
+    <div class="windBox">
+        <p id='kills' class="gameText"></p>
+        <p id='deaths' class="gameText"></p>
+        <p id='hp' class='gameText'></p>
+        <p id='winds' class="gameText"></p>
+        <p id='windd' class="gameText"></p>
+    </div>
+
+    <div class="chatBox">
+        <ul id="messages"></ul>
+        <form action="/play" method="POST" id="chatForm">
+            <input id="txt" autocomplete="off" autofocus="on" placeholder="type your message here..." /><button class="chatSend">Send</button>
+        </form>
+
+        <script>
+            // submit text message without reload/refresh the page
+            $('#chatForm').submit(function(e){
+                e.preventDefault(); // prevents page reloading
+                // console.log('got here');
+                socket.emit('chat_message', $('#txt').val());
+                $('#txt').val('');
+                return false;
+            });
+
+            //append text if someone types
+            socket.on('chat_message', function(msg){
+                // console.log('got here 2');
+                $('#messages').append($('<li>').html(msg));
+                $("#messages").animate({scrollTop: $('#messages').prop("scrollHeight")},0);
+            });
+
+            // append text if someone is online
+            socket.on('is_online', function(username) {
+                // console.log('got here 3');
+                $('#messages').append($('<li>').html(username));
+            });
+
+            var username = <%- JSON.stringify(indv_stats[0].username)%>;
+            socket.emit('username', username);
+        </script>
+
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,29 @@
+body{
+    background-image: url(PurpleGrid.gif);
+}
+
+h1{
+    padding-top:100px;
+    text-align:center;
+    font-weight: bold;
+    color: #ed21ff;
+
+}
+
+h2{
+    color: #ed21ff;
+    text-align:center;
+    font-weight: bold;
+}
+
+button{
+    margin:auto;
+    display:block;
+    color:#ed21ff;
+    border:2px solid #ed21ff;
+    background: black;
+    position: relative;
+    padding: 10px;
+    width: 25%;
+    }
+}

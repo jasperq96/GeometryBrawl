@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="stylesheets/login.css">
+    <script type="text/javascript" src="javascript/login.js"></script>
+  </head>
+  <body>
+    <h1 class="heading">Geometry Brawl</h1>
+    <div class="descBackground">
+        <h2 class="writing">Geometry Brawl</h2>
+        <p class="writing" id="desc">Geometry Brawl is a 2D real time PVP shooter.
+        Each player starts with 3 lives and everytime a player gets shot, they lose a life.
+        The game is never ending as players automatically respawn after losing their lives.
+        Every kill gives characters experience points to upgrade and buy new cosmetic character colours and shapes in shop.
+        Once you're ready, create an account and hop in game! Have fun!
+        </p>
+    </div>
+
+    <div class="loginBackground">
+      <div class="tabs">
+        <button class="tablinks" onclick="tabSwitching(signinTab, 'login')" id="signinTab">Sign in</button>
+        <button class="tablinks" onclick="tabSwitching(signupTab, 'signup')" id="signupTab">Sign up</button>
+      </div>
+
+      <div id="login" class="tabcontent">
+        <form action="/login" method="post">
+          <p class="writing"> <u> Sign-in </u> </p>
+          <input type="text" name="user_name" placeholder="Username" class="inputBox">
+          <input type="password" name="pass" placeholder="Password" class="inputBox">
+          <input class="sub_buttons" type="submit" value="Submit">
+          <p id="answer"></p>
+        </form>
+      </div>
+
+      <div id="signup" class="tabcontent">
+        <!-- Can change in the future -->
+        <form action="/signup" method="post">
+          <p class="writing"> <u> Sign-Up </u> </p>
+          <input type="text" name="signupUser" placeholder="Enter a unique Username" class="inputBox">
+          <input type="password" name="signupPass" placeholder="Enter a secure Password" class="inputBox">
+          <input class="sub_buttons" type="submit" value="Submit">
+          <p id="answer"></p>
+        </form>
+
+      </div>
+    </div>
+  </body>
+</html>

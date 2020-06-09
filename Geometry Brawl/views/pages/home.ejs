@@ -1,0 +1,210 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="stylesheets/main.css">
+    <script type="text/javascript" src="javascript/home.js"></script>
+    <!-- <script type="text/javascript" src="../../game/sketch.js"></script> -->
+    <script src="https://fathomless-castle-05798.herokuapp.com/socket.io/socket.io.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <title>Main menu</title>
+</head>
+<body>
+    <div>
+    <div class="statsboard">
+            <table style="padding:10px;">
+                <tr>
+                    <% indv_stats.forEach(function(i_s) { %>
+                    <td class="statsboardTable" id="userName"><%=i_s.username%></td>
+                    <td class="statsboardTable">wins: <%=i_s.wins%></td>
+                    <td class="statsboardTable">loss: <%=i_s.loss%></td>
+                    <td class="statsboardTable">kills: <%=i_s.kills%></td>
+                    <td class="statsboardTable">deaths: <%=i_s.deaths%></td>
+                    <td class="statsboardTable">exp: <%=i_s.exp%></td>
+                    <td class="statsboardTable">Color: <%=i_s.color%></td>
+                    <td class="statsboardTable">Shape: <%=i_s.shape%></td>
+                    <%}); %>
+                    <form action="/logout" method="get">
+                        <td class="statsboardTable"><button id="logout" type="submit">Logout</button></td>
+                    </form>
+            </table>
+
+    </div>
+        <div class="menuBackground" id="menuBg">
+            <div class="menuTabs">
+                <button class="tabButtons" onclick="tabSwitching(playTab, 'play', 'menuBg', '#0ff0fc')" id="playTab" style="color: #0ff0fc;">Play</button>
+                <button class="tabButtons" onclick="tabSwitching(invTab, 'inventory', 'menuBg', '#21fc0d')" id="invTab"  style="color:#21fc0d">Inventory</button>
+                <button class="tabButtons" onclick="tabSwitching(statsTab, 'stats', 'menuBg', '#8f00f1')" id="statsTab" style="color: #8f00f1;">Stats</button>
+                <button class="tabButtons" onclick="tabSwitching(shopTab, 'shop', 'menuBg', '#fffc44')" id="shopTab" style="color: #fffc44;">Shop</button>
+                <button class="tabButtons" onclick="tabSwitching(settingsTab, 'settings', 'menuBg', '#ff2929')" id="settingsTab" style="color: #ff2929;">About</button>
+
+                <% if (indv_stats[0].type==4) { %>
+                    <button class="tabButtons" onclick="tabSwitching(adminsTab, 'admins', 'menuBg', '#d4af37')" id="adminsTab" style="color: #d4af37;">Admin</button>
+                <% } %>
+            </div>
+
+
+            <div id="play" class="tabContent" >
+                <p class="playWriting">Instructions</p>
+                <div class="instructions">
+                     <table style="width: 100%">
+                        <tr>
+                            <td>WASD To Move || Directional Arrows To Move</td>
+                            <td>Left Click to Shoot</td>
+                        </tr>
+                        <tr>
+                            <td style="border:none;"><img src="assets/wasd.png" alt="WASD Keys" style="width:50%;"><img src="assets/arrow.png" alt="Arrow Keys" style="width:40%;"></td>
+                            <td style="border:none;"><img src="assets/mouseClick.png" alt="left-mouse-click picture" style="width:80%;"></td>
+                        </tr>
+                    </table>
+                   <!--  <p> WASD or Directional Arrows to move. Click to shoot.</p> -->
+                    <p><b style="font-size: 25px"><u>GamePlay</u></b></p>
+                    <p style="font-size: 18px ">You spawn into an arena that is populated by other players. Your health is displayed on your player model. The goal of the game is simple, kill as many players before you die. Good Luck!</p>
+                </div>
+                <form action="/play" method="post">
+                    <button class="playButton">Play</button>
+                </form>
+            </div>
+
+            <div id="inventory" class="tabContent">
+                <div class="inventory">
+                    <p class="inventoryWriting">Choose your color</p>
+                    <span class="circle4Inv" id="circleInv"></span>
+                    <form action="/inv" method="post">
+                        <div class="colorDividers">
+                            <input type="radio", name="inventory" value="white" class="colorPicker" id="default" onclick="colorPicker('#bbb', 'circleInv')" checked>
+                            <label for="default" style="color:#bbb;">Default</label>
+                        </div>
+                        <div class="colorDividers">
+                            <input type="radio", name="inventory" value="red" class="colorPicker" id="red" onclick="colorPicker('#ff2929', 'circleInv')">
+                            <label for="red" style="color:#ff2929;">Red</label>
+                        </div>
+                        <div class="colorDividers">
+                            <input type="radio", name="inventory" value="blue" class="colorPicker" id="blue" onclick="colorPicker('#0ff0fc', 'circleInv')">
+                            <label for="blue" style="color: #0ff0fc;">Blue</label>
+                        </div>
+                        <div class="colorDividers">
+                            <input type="radio", name="inventory" value="orange" class="colorPicker" id="purple" onclick="colorPicker('#ffb300', 'circleInv')">
+                            <label for="purple" style="color: #ffb300;">Orange</label>
+                        </div>
+                        <div class="colorDividers">
+                            <input type="radio", name="inventory" value="yellow" class="colorPicker" id="yellow" onclick="colorPicker('#fffc44', 'circleInv')">
+                            <label for="yellow" style="color:#fffc44;">Yellow</label>
+                        </div>
+                        <div class="colorDividers">
+                            <input type="radio", name="inventory" value="green" class="colorPicker" id="green" onclick="colorPicker('#21fc0d', 'circleInv')">
+                            <label for="green" style="color:#21fc0d;">Green</label>
+                        </div>
+
+                        <button type="submit" class="colorButton">Select color</button>
+                    </form>
+                </div>
+                <!-- <div class="inventory">
+                    <p class="inventoryWriting">Choose your shape</p>
+                    <p style="text-align: center; color: #21fc0d; margin-top: 10%;">To be implemented soon</p>
+                    <form action="">
+                        <input type="radio", name="inventory" value="default" class="shapePicker" checked>
+                        <input type="radio", name="inventory" value="red" class="shapePicker" checked>
+                        <input type="radio", name="inventory" value="blue" class="shapePicker" checked>
+                        <input type="radio", name="inventory" value="purple" class="shapePicker" checked>
+                        <input type="radio", name="inventory" value="yellow" class="shapePicker" checked>
+                        <input type="radio", name="inventory" value="green" class="shapePicker" checked>
+                        <button type="submit">submit</button>
+                    </form>
+                </div> -->
+            </div>
+
+            <div id="stats" class="tabContent">
+                <p class="statsWriting">Top 5 players</p>
+                <table class="statsTable">
+
+                    <% top5.forEach(function(i_s) { %>
+                    <tr>
+                        <td class="statsCells"><%=i_s.username%></td>
+                        <td class="statsCells">wins: <%=i_s.wins%></td>
+                        <td class="statsCells">loss: <%=i_s.loss%></td>
+                        <td class="statsCells">kills: <%=i_s.kills%></td>
+                        <td class="statsCells">deaths: <%=i_s.deaths%></td>
+                        <%}); %>
+                    </tr>
+                </table>
+            </div>
+
+
+            <div id="shop" class="tabContent">
+                <div id="buyItems">
+                    <h2>Welcome to the shop!</h2>
+                    <form action="/buy" method="post">
+                    <table class="buyTable">
+                        <tr>
+                            <p class ="shopWelcome">Color Styles and Shapes</p>
+                        </tr>
+
+                            <tr>
+                                <td class="item"><input type="submit" class="storeItem" name="item" value="red">Buy for 50xp</td>
+                                <td class ="item"><input type="submit" class="storeItem" name="item" value="orange">Buy for 50xp</td>
+                                <td class ="item"><input type="submit" class="storeItem" name="item" value="yellow">Buy for 50xp</td>
+                            </tr>
+                            <tr>
+                                <td class="item"><input type="submit" class="storeItem" name="item" value="green">Buy for 50xp</td>
+                                <td colspan="2"class ="item"><input type="submit" class="storeItem" name="item" value="square">Buy for 50xp</td>
+                            </tr>
+                            <tr>
+                                <td class="item"><input type="submit" class="storeItem" name="item" value="blue">Buy for 50xp</td>
+                                <td colspan="2" class ="item"><input type="submit" class="storeItem" name="item" value="triangle">Buy for 50xp</td>
+                        </tr>
+                    </table>
+                </form>
+                </div>
+            </div>
+
+
+            <div id="settings" class="tabContent">
+                <p class="aboutWriting">About Us</p>
+                <p style="color: white; font-size: 20px; font-family:georgia;">Geometry Brawl is a MMO battle arena that uses the "Dark Sky" Weather API to gather daily wind statistics that is used to affect bullet trajectory in the game. Each day the API grabs for us the current wind speed and wind direction in the area of B.C., which is then used in game as a variable for bullet direction and speed. If you want to learn more about Dark Sky, you can find their website by clicking the picture below.</p>
+                <a href="https://darksky.net/poweredby/"><img src="assets/darkSky.png" alt="Dark Sky Logo" style="max-width:100%; height:60%;"></a>
+            </div>
+
+
+            <div id="admins" class="tabContent" >
+                <br>
+                <h1 class="adminWriting">Ban a player</h1>
+                <form action="/banUser" method="post" id="banUser">
+                    <input type="text" id="adminInput" name="banUser" placeholder="Enter username of player to ban." class="adminTextboxes">
+                    <button type="submit" id="banButton" form="banUser">Ban User</button>
+                </form>
+
+                <br>
+
+                <h1 class="adminWriting">Change player to Administrator</h1>
+                <form action="/adminUser" method="post" id="adminUser">
+                    <input type="text" id="adminInput" name="adminUser" placeholder="Enter username of player to crown admin." class="adminTextboxes">
+                    <button type="submit" id="adminButton" form="adminUser">Promote User</button>
+                </form>
+
+
+                <br>
+
+                <h1 class="adminWriting">Edit player's stats</h1>
+                <form action="/editUser" method="post" id="edit">
+                    <input type="text" id="adminInput" name="idEdit" placeholder="Enter Username to edit stats" class="adminTextboxes">
+                    <button type="submit" id="editButton" form="edit">Edit User</button>
+                    <table class="editIndex">
+                        <tr style="border: 2px solid #d4af37;">
+                            <th style="border: 2px solid #d4af37; color:#d4af37;">Kills</th>
+                            <th style="border: 2px solid #d4af37; color:#d4af37;">Deaths</th>
+                            <th style="border: 2px solid #d4af37; color:#d4af37;">Exp</th>
+                        </tr>
+                        <tr >
+                            <td style="border: 2px solid #d4af37;"><input type="number" name="kills"></td>
+                            <td style="border: 2px solid #d4af37;"><input type="number" name="deaths"></td>
+                            <td style="border: 2px solid #d4af37;"><input type="number" name="exp"></td>
+                        </tr>
+                    </table>
+                </form>
+                </div>
+        </div>
+
+</body>
+</html>

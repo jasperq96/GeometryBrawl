@@ -1,0 +1,355 @@
+/*/////////////////For Chat Box///////////////*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#chatForm {
+  background: #fff;
+  padding: 3px;
+  position: fixed;
+  bottom: 0; width: 20%;
+  border-color: #000;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-radius: 20px;
+}
+
+form input {
+  border-style: solid;
+  border-width: 1px;
+  padding: 10px;
+  width: 70%;
+  margin-left: 2%
+}
+
+.chatSend {
+  width: 20%;
+  background: rgb(130, 224, 255);
+  border: none;
+  padding: 10px;
+  margin-left: 5%;
+}
+
+ul{
+  max-height:760px;
+  overflow:auto;
+}
+
+#messages {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  border-radius:2px;
+}
+#messages li { padding: 5px 10px; }
+#messages li:nth-child(odd) { background: #eee; }
+
+/* ////////////////main menu///////////////// */
+
+body{
+  overflow: auto;
+  background-image: url(PurpleGrid.gif);
+}
+.menuBackground{
+  width: 90%;
+  height: 80%;
+  border: 2px solid;
+  background: rgba(0, 0, 0, 0.9);
+  float:left;
+
+  border-radius: 20px;
+  overflow: hidden;
+  margin-left: 3%;
+}
+.menuTabs{
+  display: table;
+  width:100%;
+  height:5%;
+  border: 2px solid black;
+}
+.tabButtons{
+  width: 16%;
+  height:100%;
+  display: table-cell;
+  outline: none;
+  cursor: pointer;
+  transition: 0.3s;
+
+  border-left: none;
+  border-top: none;
+  border-right: none;
+  font-weight: bold;
+  font-size: 130%;
+  background: rgba(0, 0, 0, 0.4);
+}
+.tabContent{
+  display: none;
+}
+#logout{
+  background-color: #ff2929;
+  color: black;
+  padding: 10px 15px;
+  text-align: center;
+  font-size: 15px;
+  border-radius:8px;
+}
+
+/* ////////////////stats board///////////////////// */
+.statsboard{
+  display: table;
+  width: 90%;
+  height:15%;
+  border: 2px solid black;
+  background: rgba(0, 0, 0, 0.4);
+
+  border-radius: 20px;
+  overflow: hidden;
+  margin-left: 3%;
+  margin-right: 5%;
+}
+.statsboardTable{
+  border: 2px solid #ff2929;
+  width: 10%;
+  font-size: 110%;
+  font-weight: bold;
+}
+
+/* ////////////////////////Stats tab/////////////////// */
+.statsTable{
+  width: 90%;
+  padding: 5%;
+  margin-left: 5%;;
+  border: #8f00f1;
+}
+.statsCells{
+  border-collapse: collapse;
+  border: 2px solid #8f00f1;
+  font-size: 130%;
+  font-weight: bold;
+}
+.statsWriting{
+    text-align: center;
+    color: black;
+    font-size: 50px;
+    text-shadow: -1px 0 #8f00f1, 0 1px #8f00f1, 1px 0 #8f00f1, 0 -1px #8f00f1, 1px 2px 0 #8f00f1, 1px 4px 0 #8f00f1, 1px 7px 3px #8f00f1;
+}
+
+/* //////////////Play Tab//////////////// */
+
+.instructions{
+  color: #0ff0fc;
+  border: 2px solid #0ff0fc;
+  width: 50%;
+  height:50%;
+  margin-left: 25%;
+  margin-top: 2%;
+  border-radius:4px;
+}
+.playButton{
+  color: #0ff0fc;
+  border: 2px solid #0ff0fc;
+  background: rgba(0, 0, 0, 0.4);
+  margin-left: 42.5%;
+  margin-top: 7%;
+  width: 15%;
+  height: 10%;
+  font-weight: bold;
+  font-size: 300%;
+  overflow:hidden;
+  border-radius:8px;
+}
+.playWriting{
+  text-align: center;
+  color: black;
+  font-size: 50px;
+  text-shadow: -1px 0 #0ff0fc, 0 1px #0ff0fc, 1px 0 #0ff0fc, 0 -1px #0ff0fc, 1px 2px 0 #0ff0fc, 1px 4px 0 #0ff0fc, 1px 7px 3px #0ff0fc;
+}
+
+/* //////////////////inventory/////////// */
+.inventory{
+  overflow: hidden;
+  width: 45%;
+  height: 90%;
+  margin-left: 30%;
+  margin-top: 2%;
+  float: left;
+}
+.inventory sub{
+
+  float:left;
+  color: #21fc0d;
+  text-align: center;
+}
+
+[type="radio"]:checked,
+[type="radio"]:not(:checked){
+  cursor: pointer;
+  color: #21fc0d;
+  width: auto;
+  visibility:hidden;
+}
+[type="radio"]:checked + label,
+[type="radio"]:not(:checked) + label{
+  cursor: pointer;
+  color: #21fc0d;
+  font-size: 120%;
+  font-weight: bold;
+  float: right;
+  margin-right: 20%;
+}
+.circle4Inv{
+  height: 100px;
+  width: 100px;
+  border: 10px solid black;
+  background-color:#bbb;
+  border-radius: 50%;
+  display: inline-block;
+  margin-left: 20%;
+  margin-top: 10%;
+  float: left;
+}
+.inventoryWriting{
+  text-align: center;
+  color: black;
+  font-size: 50px;
+  text-shadow: -1px 0 #21fc0d, 0 1px #21fc0d, 1px 0 #21fc0d, 0 -1px #21fc0d, 1px 2px 0 #21fc0d, 1px 4px 0 #21fc0d, 1px 7px 3px #21fc0d;
+}
+.colorButton{
+  color: #21fc0d;
+  border: 2px solid #21fc0d;
+  background: rgba(0, 0, 0, 0.4);
+  margin-left: 25%;
+  margin-top: 10%;
+  width: 50%;
+  height: auto;
+  font-weight: bold;
+  font-size: 300%;
+  overflow:hidden;
+  border-radius:8px;
+}
+.colorDividers{
+  align-content: center;
+  margin-top: 3%;
+}
+/* /////////////////////Shop menu/////////////////// */
+.buyTable{
+  margin:0 auto;
+
+}
+.storeItem{
+  border: 15px solid black;
+  background-color: white;
+  padding: 10px 15px;
+  text-align: center;
+  font-size: 15px;
+  border-radius:8px;
+  color:black;
+  width:95%;
+}
+.shopWelcome{
+  color:black;
+  font-size:50px;
+  text-align:center;
+  text-shadow: -1px 0 yellow, 0 1px yellow, 1px 0 yellow, 0 -1px yellow, 1px 2px 0 yellow, 1px 4px 0 yellow, 1px 7px 3px yellow;
+
+}
+
+
+/* /////////////////////About Tab/////////////////// */
+.aboutWriting{
+  text-align: center;
+  color: black;
+  font-size: 50px;
+  text-shadow: -1px 0 red, 0 1px red, 1px 0 red, 0 -1px red, 1px 2px 0 red, 1px 4px 0 red, 1px 7px 3px red;
+}
+
+/* ////////////////////Admin Tab///////////////////////// */
+
+.adminWriting{
+  color:black;
+  font-size:50px;
+  text-align:center;
+  text-shadow: -1px 0 #d4af37, 0 1px #d4af37, 1px 0 #d4af37, 0 -1px #d4af37, 1px 2px 0 #d4af37, 1px 4px 0 #d4af37, 1px 7px 3px #d4af37;
+}
+
+.adminTextboxes{
+  margin-top: 5px;
+  margin-left: 33%;
+  /* display: block;
+  margin: 10px auto; */
+  border-radius:2px;
+  border: 2px solid #d4af37;
+}
+
+#banButton{
+  padding:5px;
+  border-radius:2px;
+  color:black;
+  background-color:darkred;
+}
+
+#adminButton{
+  padding:5px;
+  border-radius:2px;
+  color:black;
+  background-color:lightgreen;
+}
+
+#editButton{
+  padding:5px;
+  border-radius:2px;
+  color:black;
+  background-color:cyan;
+}
+
+#adminInput{
+  width:30%;
+}
+
+.editIndex{
+  margin-top: 5px;
+  margin-left: 23%;
+}
+
+/* ////////////////////////////////////////////////////// */
+
+.chatBox{
+  float:left;
+  width: 20%;
+  height: 77%;
+  border: 2px solid black;
+  background: white;
+  border-radius: 20px;
+  overflow:auto;
+}
+
+#stats {
+  padding: 20px;
+}
+
+th, td {
+  border: 1px solid white;
+  padding: 15px;
+  text-align:left;
+  text-align: center;
+  color: white;
+  border-radius:3px;
+
+}
+
+.topStats{
+    color:#ff2929;
+    font-size: 20px;
+}
+
+.heading{
+    text-align: center;
+    color: black;
+    font-size: 30px;
+    text-shadow: -2px 0 #ed21ff, 0 2px #ed21ff, 2px 0 #ed21ff, 0 -2px #ed21ff, 1px 3px 0 #ed21ff, 1px 8px 0 #ed21ff, 1px 13px 5px #ed21ff;
+}
+h1{
+  color:white;
+}
